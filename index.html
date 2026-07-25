@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wedding Invitation | Rachana & Nitin</title>
+    
+    <!-- PWA Meta Tags -->
+    <meta name="theme-color" content="#7A1C2E">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="R&N Wedding">
+    <link rel="apple-touch-icon" href="app-icon.png">
+    <link rel="manifest" href="manifest.json">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Cinzel:wght@400;600;700&family=Montserrat:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Background Music -->
+    <audio id="bg-music" loop preload="auto">
+        <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3" type="audio/mpeg">
+    </audio>
+    <button id="music-toggle" class="music-control hidden" aria-label="Toggle Music">
+        <i class="fas fa-music"></i>
+        <span class="music-waves">
+            <span></span>
+            <span></span>
+            <span></span>
+        </span>
+    </button>
+
+    <!-- PWA Install Control -->
+    <button id="pwa-install-btn" class="pwa-install-control hidden" aria-label="Install App">
+        <i class="fas fa-download"></i>
+        <span>Install App</span>
+    </button>
+
+    <!-- Canvas for Floating Gold Leaves and Rose Petals -->
+    <canvas id="particles-canvas"></canvas>
+
+    <!-- Overlay: The Wax Seal Invitation Card (Envelope) -->
+    <div id="envelope-overlay" class="envelope-overlay">
+        <div class="envelope-container">
+            <div class="envelope">
+                <div class="flap top-flap"></div>
+                <div class="flap left-flap"></div>
+                <div class="flap right-flap"></div>
+                <div class="letter">
+                    <div class="letter-content">
+                        <h3>The Wedding Invitation of</h3>
+                        <h1>Rachana & Nitin</h1>
+                        <p class="invite-subtext">Click the golden seal to open</p>
+                    </div>
+                </div>
+                <div class="wax-seal" id="open-envelope">
+                    <div class="seal-inner">
+                        <span>R & N</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Content (revealed after envelope opens) -->
+    <div id="main-content" class="main-content blurred">
+        
+        <!-- Hero Section -->
+        <section class="hero-section" id="home">
+            <div class="decorative-border-top"></div>
+            <div class="hero-inner">
+                <p class="section-subtitle">We Are Getting Married</p>
+                <h1 class="couple-names">Rachana <span class="heart-pulse"><i class="fas fa-heart"></i></span> Nitin</h1>
+                <p class="wedding-date-hero">August 20 & 21, 2026</p>
+                
+                <!-- Countdown Timer -->
+                <div class="countdown-container">
+                    <div class="countdown-box">
+                        <span id="days">00</span>
+                        <p>Days</p>
+                    </div>
+                    <div class="countdown-separator">:</div>
+                    <div class="countdown-box">
+                        <span id="hours">00</span>
+                        <p>Hours</p>
+                    </div>
+                    <div class="countdown-separator">:</div>
+                    <div class="countdown-box">
+                        <span id="minutes">00</span>
+                        <p>Mins</p>
+                    </div>
+                    <div class="countdown-separator">:</div>
+                    <div class="countdown-box">
+                        <span id="seconds">00</span>
+                        <p>Secs</p>
+                    </div>
+                </div>
+
+                <div class="scroll-indicator">
+                    <p>Scroll Down</p>
+                    <i class="fas fa-chevron-down bounce"></i>
+                </div>
+            </div>
+            <div class="decorative-border-bottom"></div>
+        </section>
+
+        <!-- Quotes / Thoughts Section -->
+        <section class="quotes-section">
+            <div class="container">
+                <div class="quote-card animate-on-scroll">
+                    <i class="fas fa-quote-left quote-icon"></i>
+                    <p class="wedding-quote">
+                        "Love is not just looking at each other, it's looking in the same direction together. As we step into a lifetime of shared dreams and laughter, your presence will make our celebration complete."
+                    </p>
+                    <span class="quote-divider"></span>
+                    <p class="wedding-quote-sub">Join us to celebrate the beginning of our forever.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Timeline/Schedule Section -->
+        <section class="timeline-section" id="schedule">
+            <div class="container">
+                <h2 class="section-title">Wedding Schedule</h2>
+                <p class="section-desc">Please join us for the celebrations across the two special days</p>
+
+                <div class="timeline">
+                    <!-- Day 1: Reception -->
+                    <div class="timeline-item left animate-on-scroll">
+                        <div class="timeline-img">
+                            <i class="fas fa-glass-cheers"></i>
+                        </div>
+                        <div class="timeline-content">
+                            <span class="event-date">Thursday, Aug 20, 2026</span>
+                            <h3 class="event-title">The Grand Reception</h3>
+                            <div class="event-time">
+                                <i class="far fa-clock"></i> 7:30 PM Onwards
+                            </div>
+                            <p class="event-details">
+                                Welcoming the bride and groom! Join us for a magical evening of music, celebrations, and a grand dinner as we raise a toast to Rachana & Nitin.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Day 2: Muhurtham -->
+                    <div class="timeline-item right animate-on-scroll">
+                        <div class="timeline-img">
+                            <i class="fas fa-om"></i>
+                        </div>
+                        <div class="timeline-content">
+                            <span class="event-date">Friday, Aug 21, 2026</span>
+                            <h3 class="event-title">The Holy Muhurtham</h3>
+                            <div class="event-time">
+                                <i class="far fa-clock"></i> 9:30 AM - 10:30 AM
+                            </div>
+                            <p class="event-details">
+                                The auspicious ceremony where the couple ties the knot under Vedic blessings. We request your presence to witness and bless the sacred wedding union.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Day 2: Reception & Lunch -->
+                    <div class="timeline-item left animate-on-scroll">
+                        <div class="timeline-img">
+                            <i class="fas fa-utensils"></i>
+                        </div>
+                        <div class="timeline-content">
+                            <span class="event-date">Friday, Aug 21, 2026</span>
+                            <h3 class="event-title">Traditional Feast & Reception</h3>
+                            <div class="event-time">
+                                <i class="far fa-clock"></i> 11:30 AM Onwards
+                            </div>
+                            <p class="event-details">
+                                Following the holy Muhurtham, please join us to celebrate with the newlyweds and enjoy a traditional grand wedding feast.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Venue Section -->
+        <section class="venue-section" id="venue">
+            <div class="container">
+                <h2 class="section-title">The Venue</h2>
+                <p class="section-desc">Located in the scenic city of Shimoga</p>
+
+                <div class="venue-card animate-on-scroll">
+                    <div class="venue-image-container">
+                        <img src="venue.jpg" alt="Sarji Convention Hall Shimoga" class="venue-image">
+                        <div class="image-overlay"></div>
+                    </div>
+                    <div class="venue-info">
+                        <h3 class="venue-name">Sarji Convention Hall</h3>
+                        <p class="venue-address">
+                            <i class="fas fa-map-marker-alt"></i> 
+                            Near Bypass Road, Shimoga, Karnataka - 577201
+                        </p>
+                        <p class="venue-desc">
+                            A grand, elegant convention center offering a majestic setting and ample amenities, perfect for celebrating this milestone in our lives.
+                        </p>
+                        <a href="https://www.google.com/maps/place/Sarji+Convention+Hall/@13.9558099,75.5858881,15z/data=!4m6!3m5!1s0x3bbbaed9696fa039:0xaa43f7a0d128044a!8m2!3d13.9590712!4d75.5787586!16s%2Fg%2F11f1hld3l7?entry=ttu&g_ep=EgoyMDI2MDcwNi4wIKXMDSoASAFQAw%3D%3D" 
+                           target="_blank" 
+                           class="btn-navigate"
+                           id="btn-navigate">
+                            <i class="fas fa-directions"></i> Navigate on Google Maps
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- RSVP Section -->
+        <section class="rsvp-section" id="rsvp">
+            <div class="container">
+                <h2 class="section-title">RSVP</h2>
+                <p class="section-desc">We request you to kindly confirm your presence</p>
+
+                <div class="rsvp-card animate-on-scroll">
+                    <form id="rsvp-form" class="rsvp-form">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="guest-name">Your Full Name</label>
+                                <div class="input-wrapper">
+                                    <i class="fas fa-user"></i>
+                                    <input type="text" id="guest-name" name="name" placeholder="Enter your name" required>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label>Will you attend?</label>
+                                <div class="attendance-options">
+                                    <label class="attendance-label">
+                                        <input type="radio" name="attendance" value="yes" checked>
+                                        <span class="attendance-custom">
+                                            <i class="fas fa-check-circle"></i> Yes, Attending
+                                        </span>
+                                    </label>
+                                    <label class="attendance-label">
+                                        <input type="radio" name="attendance" value="no">
+                                        <span class="attendance-custom">
+                                            <i class="fas fa-times-circle"></i> Regretfully Decline
+                                        </span>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-row guests-count-row">
+                            <div class="form-group">
+                                <label for="guests-count">Number of Guests (including you)</label>
+                                <div class="input-wrapper">
+                                    <i class="fas fa-users"></i>
+                                    <select id="guests-count" name="guests">
+                                        <option value="1">1 Person</option>
+                                        <option value="2">2 People</option>
+                                        <option value="3">3 People</option>
+                                        <option value="4">4 People</option>
+                                        <option value="5+">5+ People</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="guest-message">Message for the Couple</label>
+                                <div class="input-wrapper">
+                                    <i class="fas fa-comment-alt"></i>
+                                    <textarea id="guest-message" name="message" rows="3" placeholder="Leave a sweet blessing or note..."></textarea>
+                                </div>
+                            </div>
+                        </div>
+
+                        <button type="submit" class="btn-submit" id="btn-submit">
+                            <span class="btn-text">Send Invitation RSVP</span>
+                            <span class="spinner hidden"><i class="fas fa-circle-notch fa-spin"></i></span>
+                        </button>
+                    </form>
+
+                    <!-- Success Message Overlay -->
+                    <div id="rsvp-success" class="rsvp-success hidden">
+                        <i class="fas fa-heart rsvp-success-icon"></i>
+                        <h3>Thank You!</h3>
+                        <p id="rsvp-success-text">Your response has been received. We look forward to celebrating with you!</p>
+                        <button type="button" class="btn-close-rsvp" id="btn-close-rsvp">Edit Response</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Guest Book / Wishes Section -->
+        <section class="wishes-section" id="wishes">
+            <div class="container">
+                <h2 class="section-title">Wishes Wall</h2>
+                <p class="section-desc">Leave your blessings and loving messages for Rachana & Nitin</p>
+
+                <!-- Post a wish form -->
+                <div class="post-wish-card animate-on-scroll">
+                    <form id="wish-form">
+                        <div class="wish-form-fields">
+                            <input type="text" id="wish-name" placeholder="Your Name" required>
+                            <input type="text" id="wish-text" placeholder="Write your blessing here..." required>
+                            <button type="submit" class="btn-wish" id="btn-wish">
+                                <i class="fas fa-paper-plane"></i>
+                            </button>
+                        </div>
+                    </form>
+                </div>
+
+                <!-- Wishes Display Grid -->
+                <div class="wishes-grid" id="wishes-grid">
+                    <!-- Dynamic wishes go here -->
+                </div>
+            </div>
+        </section>
+
+        <!-- QR Code Section -->
+        <section class="qrcode-section animate-on-scroll" id="qrcode">
+            <div class="container">
+                <h2 class="section-title">Scan to Open</h2>
+                <p class="section-desc">Scan this QR code with your mobile camera to open this invitation instantly on your phone</p>
+                <div class="qr-card">
+                    <div class="qr-border-corner top-left"></div>
+                    <div class="qr-border-corner top-right"></div>
+                    <div class="qr-border-corner bottom-left"></div>
+                    <div class="qr-border-corner bottom-right"></div>
+                    <div id="qr-container" class="qr-container">
+                        <img id="qr-image" src="" alt="Scan to open wedding invitation">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="wedding-footer">
+            <div class="footer-inner">
+                <p class="footer-names">Rachana & Nitin</p>
+                <p class="footer-tagline">Joined in Love, Bound by Destiny</p>
+                <div class="footer-icons">
+                    <i class="fas fa-ring"></i>
+                    <i class="fas fa-heart"></i>
+                    <i class="fas fa-dove"></i>
+                </div>
+                <p class="footer-copyright">&copy; 2026 Rachana & Nitin. Made with Love.</p>
+            </div>
+        </footer>
+
+    </div>
+
+    <!-- Custom JS -->
+    <script src="app.js"></script>
+</body>
+</html>
