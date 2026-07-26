@@ -174,7 +174,7 @@ const canvas = document.getElementById('particles-canvas');
 const ctx = canvas.getContext('2d');
 
 let particles = [];
-const particleCount = 45;
+const particleCount = window.matchMedia('(max-width: 768px)').matches ? 28 : 45;
 
 function resizeCanvas() {
     canvas.width = window.innerWidth;
@@ -471,59 +471,5 @@ if ('serviceWorker' in navigator) {
             .then(reg => console.log('Service Worker registered successfully!', reg.scope))
             .catch(err => console.error('Service Worker registration failed:', err));
     });
-}
-
-/* ==========================================
-   PWA INSTALL EVENT HANDLER
-   ========================================== */
-let deferredPrompt;
-const pwaInstallBtn = document.getElementById('pwa-install-btn');
-
-window.addEventListener('beforeinstallprompt', (e) => {
-    // Prevent Chrome 67 and earlier from automatically showing the prompt
-    e.preventDefault();
-    // Stash the event so it can be triggered later.
-    deferredPrompt = e;
-    // Update UI to notify the user they can install the PWA
-    pwaInstallBtn.classList.remove('hidden');
-});
-
-pwaInstallBtn.addEventListener('click', (e) => {
-    if (!deferredPrompt) return;
-    // Hide the app install button
-    pwaInstallBtn.classList.add('hidden');
-    // Show the install prompt
-    deferredPrompt.prompt();
-    // Wait for the user to respond to the prompt
-    deferredPrompt.userChoice.then((choiceResult) => {
-        if (choiceResult.outcome === 'accepted') {
-            console.log('User accepted the PWA install prompt');
-        } else {
-            console.log('User dismissed the PWA install prompt');
-        }
-        deferredPrompt = null;
-    });
-});
-
-window.addEventListener('appinstalled', (evt) => {
-    console.log('Wedding Invitation App installed successfully!');
-    pwaInstallBtn.classList.add('hidden');
-});
-
-/* ==========================================
-   DYNAMIC QR CODE GENERATION
-   ========================================== */
-const qrImage = document.getElementById('qr-image');
-if (qrImage) {
-    let currentUrl = window.location.href;
-    
-    // If opened as local file (e.g. file:///C:/...), QR code cannot load direct link.
-    // In this case, fallback to a clean web demo URL that can be tested, or display local host
-    if (currentUrl.startsWith('file://')) {
-        currentUrl = 'https://rachana-nitin-wedding.web.app'; // placeholder for client deployment
-    }
-    
-    // Generate QR using public API with themed burgundy color and cream background matching the invite
-    qrImage.src = `https://api.qrserver.com/v1/create-qr-code/?size=250x250&color=7a1c2e&bgcolor=fffdf9&data=${encodeURIComponent(currentUrl)}`;
 }
 

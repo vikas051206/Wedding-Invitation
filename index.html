@@ -2,7 +2,9 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
     <title>Wedding Invitation | Rachana & Nitin</title>
     
     <!-- PWA Meta Tags -->
@@ -35,12 +37,6 @@
             <span></span>
             <span></span>
         </span>
-    </button>
-
-    <!-- PWA Install Control -->
-    <button id="pwa-install-btn" class="pwa-install-control hidden" aria-label="Install App">
-        <i class="fas fa-download"></i>
-        <span>Install App</span>
     </button>
 
     <!-- Canvas for Floating Gold Leaves and Rose Petals -->
@@ -320,23 +316,6 @@
                 <!-- Wishes Display Grid -->
                 <div class="wishes-grid" id="wishes-grid">
                     <!-- Dynamic wishes go here -->
-                </div>
-            </div>
-        </section>
-
-        <!-- QR Code Section -->
-        <section class="qrcode-section animate-on-scroll" id="qrcode">
-            <div class="container">
-                <h2 class="section-title">Scan to Open</h2>
-                <p class="section-desc">Scan this QR code with your mobile camera to open this invitation instantly on your phone</p>
-                <div class="qr-card">
-                    <div class="qr-border-corner top-left"></div>
-                    <div class="qr-border-corner top-right"></div>
-                    <div class="qr-border-corner bottom-left"></div>
-                    <div class="qr-border-corner bottom-right"></div>
-                    <div id="qr-container" class="qr-container">
-                        <img id="qr-image" src="" alt="Scan to open wedding invitation">
-                    </div>
                 </div>
             </div>
         </section>

@@ -1,4 +1,4 @@
-const CACHE_NAME = 'wedding-v1';
+const CACHE_NAME = 'wedding-v2';
 const ASSETS = [
   './',
   './index.html',
@@ -6,7 +6,8 @@ const ASSETS = [
   './app.js',
   './venue.jpg',
   './app-icon.png',
-  './manifest.json'
+  './manifest.json',
+  './qr-print.html'
 ];
 
 // Install event: cache resources

@@ -2,7 +2,7 @@
   "name": "Rachana & Nitin Wedding Invitation",
   "short_name": "R&N Wedding",
   "description": "Wedding Invitation of Rachana and Nitin. Join us to celebrate our forever.",
-  "start_url": "./index.html",
+  "start_url": "/",
   "display": "standalone",
   "background_color": "#FFFDF9",
   "theme_color": "#7A1C2E",
