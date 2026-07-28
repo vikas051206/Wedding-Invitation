@@ -85,71 +85,6 @@ h1, h2, h3, h4 {
 }
 
 /* ==========================================
-   MUSIC CONTROL BUTTON
-   ========================================== */
-.music-control {
-    position: fixed;
-    bottom: 24px;
-    right: 24px;
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    background: var(--glass-bg);
-    border: 2px solid var(--gold);
-    color: var(--burgundy);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    box-shadow: var(--shadow-premium);
-    z-index: 999;
-    transition: var(--transition-smooth);
-}
-
-.music-control.hidden {
-    opacity: 0;
-    transform: scale(0.8);
-    pointer-events: none;
-}
-
-.music-control:hover {
-    transform: scale(1.1);
-    background: var(--cream-dark);
-    box-shadow: 0 0 15px rgba(212, 175, 55, 0.4);
-}
-
-.music-control i {
-    font-size: 1.2rem;
-}
-
-.music-waves {
-    display: none;
-    align-items: flex-end;
-    gap: 2px;
-    height: 14px;
-    margin-left: 4px;
-}
-
-.music-control.playing .music-waves {
-    display: flex;
-}
-
-.music-waves span {
-    width: 2px;
-    background-color: var(--burgundy);
-    animation: bounce-waves 1s ease-in-out infinite alternate;
-}
-
-.music-waves span:nth-child(1) { height: 6px; animation-delay: 0.1s; }
-.music-waves span:nth-child(2) { height: 12px; animation-delay: 0.3s; }
-.music-waves span:nth-child(3) { height: 8px; animation-delay: 0.5s; }
-
-@keyframes bounce-waves {
-    0% { transform: scaleY(0.3); }
-    100% { transform: scaleY(1); }
-}
-
-/* ==========================================
    ENVELOPE OVERLAY & ANIMATION
    ========================================== */
 .envelope-overlay {
@@ -1054,15 +989,6 @@ h1, h2, h3, h4 {
     }
     .section-title {
         font-size: 1.8rem;
-    }
-}
-
-@media screen and (max-width: 480px) {
-    .music-control {
-        bottom: max(16px, env(safe-area-inset-bottom));
-        right: max(16px, env(safe-area-inset-right));
-        width: 44px;
-        height: 44px;
     }
 }
 
