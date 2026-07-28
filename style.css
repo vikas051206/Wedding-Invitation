@@ -799,7 +799,7 @@ h1, h2, h3, h4 {
 
 .photos-grid {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(3, 1fr);
     gap: 30px;
     max-width: 850px;
     margin: 0 auto;
@@ -837,6 +837,12 @@ h1, h2, h3, h4 {
     .photos-grid {
         grid-template-columns: 1fr;
         max-width: 340px;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .photos-grid {
+        grid-template-columns: repeat(2, 1fr);
     }
 }
 
